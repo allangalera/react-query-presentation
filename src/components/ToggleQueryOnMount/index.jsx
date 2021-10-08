@@ -1,5 +1,5 @@
-import { useMemo, useState, useCallback } from 'react';
-import { QueryOnMountDois } from '../QueryOnMount2';
+import { useState, useCallback } from 'react';
+import { QueryOnMount } from '../QueryOnMount';
 
 export const ToggleQueryOnMount = () => {
   const [isShowing, setIsShowing] = useState(false);
@@ -8,16 +8,10 @@ export const ToggleQueryOnMount = () => {
     setIsShowing((state) => !state);
   }, [setIsShowing]);
 
-  const render = useMemo(() => {
-    const finalRender = [
-      <button key={0} onClick={handleToggle}>
-        Toggle
-      </button>,
-    ];
-    if (isShowing) finalRender.push(<QueryOnMountDois />);
-
-    return finalRender;
-  }, [isShowing, handleToggle]);
-
-  return render;
+  return (
+    <>
+      <button onClick={handleToggle}>Toggle</button>
+      {isShowing ? <QueryOnMount /> : null}
+    </>
+  );
 };
