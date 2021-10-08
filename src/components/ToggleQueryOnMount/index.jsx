@@ -9,7 +9,11 @@ export const ToggleQueryOnMount = () => {
   }, [setIsShowing]);
 
   const render = useMemo(() => {
-    const finalRender = [<button onClick={handleToggle}>Toggle</button>];
+    const finalRender = [
+      <button key={0} onClick={handleToggle}>
+        Toggle
+      </button>,
+    ];
     if (isShowing) finalRender.push(<QueryOnMountDois />);
 
     return finalRender;
